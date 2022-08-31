@@ -46,74 +46,75 @@ module.exports = client => {
 
         let messageNum = 0
 
-        if (messages.size > 0) {
-            messages.forEach(message => {
-                if (message.author.id == client.user.id) {
-                    // console.log(sorts.length - (messageNum + 1))
+        // if (messages.size > 0) {
+        //     messages.forEach(message => {
+        //         if (message.author.id == client.user.id) {
+        //             // console.log(sorts.length - (messageNum + 1))
 
-                    // console.log(sorts)
-                    message.edit({
-                        content: `***${sorts[sorts.length - (messageNum + 1)].name}***\n\n${sorts[sorts.length - (messageNum + 1)].data.map(thread => {
-                                return `<#${thread.id}>\n*Last Active* <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
-                            }).join("\n")}\n** **`
-                    })
-                    messageNum++
-                }
-            })
-        } else {
-            sorts.forEach(sort => {
-                channel.send({
-                    content: `***${sorts[messageNum].name}***\n\n${sorts[messageNum].data.map(thread => {
-                            return `<#${thread.id}>\n*Last Active* <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
-                        }).join("\n")}\n** **`
-                })
-                messageNum++
-            })
-        }
-
-
-        // if (messages.size > 0 ) {
-        //     return messages.first().edit({
-        //         content: sorts.map(sort => {
-        //             return `***${sort.name}***\n${sort.data.map(thread => {
-        //                     // return `<#${thread.id}>\n***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
-        //                     // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
-
-        //                     // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
-        //                 }).join("\n")}`
-        //         }).join("\n\n"),
-        //         // embeds: sorts.map(sort => {
-        //         //     return new EmbedBuilder()
-        //         //         .setTitle(`***${sort.name}***`)
-        //         //         .setDescription(sort.data.map(thread => {
-        //         // return `<#${thread.id}>\n***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
-        //         // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
-
-        //         // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
-        //         //         }).join("\n"))
-        //         //         .setColor("0x5376e0")
-        //         // })
+        //             // console.log(sorts)
+        //             message.edit({
+        //                 content: `***${sorts[sorts.length - (messageNum + 1)].name}***\n\n${sorts[sorts.length - (messageNum + 1)].data.map(thread => {
+        //                         return `<#${thread.id}>\n*Last Active* <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
+        //                     }).join("\n")}\n** **`
+        //             })
+        //             messageNum++
+        //         }
         //     })
         // } else {
-        //     return channel.send({
-        //         content: sorts.map(sort => {
-        //             return `***${sort.name}***\n${sort.data.map(thread => {
-        //                     // return `<#${thread.id}>\n***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
-        //                     // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
-
-        //                     // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
-        //                 }).join("\n")}`
-        //         }).join("\n\n"),
-        //         // embeds: sorts.map(sort => {
-        //         //     return new EmbedBuilder()
-        //         //         .setTitle(`***${sort.name}***`)
-        //         //         .setDescription(sort.data.map(thread => {
-        //         //             return `<#${thread.id}> | ${thread.total} Total Messages, Last Active <t:${Math.floor(thread.lastActive/1000)}:R> `
-        //         //         }).join("\n"))
-        //         //         .setColor("0x5376e0")
-        //         // })
+        //     sorts.forEach(sort => {
+        //         channel.send({
+        //             content: `***${sorts[messageNum].name}***\n\n${sorts[messageNum].data.map(thread => {
+        //                     return `<#${thread.id}>\n*Last Active* <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
+        //                 }).join("\n")}\n** **`
+        //         })
+        //         messageNum++
         //     })
         // }
+
+
+        if (messages.size > 0 ) {
+            return messages.first().edit({
+                // content: sorts.map(sort => {
+                //     return `***${sort.name}***\n${sort.data.map(thread => {
+                //             // return `<#${thread.id}>\n***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
+                //             // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
+
+                //             // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
+                //         }).join("\n")}`
+                // }).join("\n\n"),
+                embeds: sorts.map(sort => {
+                    return new EmbedBuilder()
+                        .setTitle(`***${sort.name}***`)
+                        .setDescription(sort.data.map(thread => {
+                return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
+                // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
+
+                // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
+                        }).join("\n"))
+                        .setImage("https://i.imgur.com/t3zhm4k.png")
+                        .setColor("0x5376e0")
+                })
+            })
+        } else {
+            return channel.send({
+                // content: sorts.map(sort => {
+                //     return `***${sort.name}***\n${sort.data.map(thread => {
+                //             // return `<#${thread.id}>\n***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R>\`\`\`Total Messages: ${thread.total}\nMessages This Week: ${thread.total}\nTags: ${thread.types.join(", ")}\`\`\``
+                //             // return `<#${thread.id}> | ***Last Active*** <t:${Math.floor(thread.lastActive/1000)}:R> | Total Messages: ${thread.total}\`\`\`Tags: ${thread.types.join(", ")}\`\`\``
+
+                //             // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
+                //         }).join("\n")}`
+                // }).join("\n\n"),
+                embeds: sorts.map(sort => {
+                    return new EmbedBuilder()
+                        .setTitle(`***${sort.name}***`)
+                        .setDescription(sort.data.map(thread => {
+                            return `<#${thread.id}> | ${thread.total} Total Messages, Last Active <t:${Math.floor(thread.lastActive/1000)}:R> `
+                        }).join("\n"))
+                        .setColor("0x5376e0")
+                })
+            })
+        }
 
     }
 }

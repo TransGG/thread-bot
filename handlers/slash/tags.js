@@ -8,8 +8,6 @@ const checks = require(`../../configs/checks.json`)
 
 exports.run = async (client, interaction, options) => {
 
-    console.log(1)
-
     if (interaction.user.bot) return;
 
     if (interaction.channel.type === 11) {
