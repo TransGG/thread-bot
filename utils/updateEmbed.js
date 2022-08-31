@@ -91,8 +91,8 @@ module.exports = client => {
 
                 // return `<#${thread.id}> | \`${thread.total}\` Total Messages | Last Active <t:${Math.floor(thread.lastActive/1000)}:R>`
                         }).join("\n"))
-                        // .setImage("https://i.imgur.com/t3zhm4k.png")
-                        .setImage("https://i.imgur.com/JPkhHvM.gif")
+                        .setImage("https://i.imgur.com/t3zhm4k.png")
+                        // .setImage("https://i.imgur.com/JPkhHvM.gif")
                         .setColor("0x5376e0")
                 })
             })
