@@ -50,6 +50,6 @@ fs.readdir("./handlers/select/", (err, files) => {
     });
 });
 
-client.mongoose.init();+
+client.mongoose.init();
 
 client.login(process.env.TOKEN);
