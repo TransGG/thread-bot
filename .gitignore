@@ -2,3 +2,5 @@
 /node_modules/
 .DS_STORE
 package-lock.json
+/configs/checks.json
+/configs/types.json
